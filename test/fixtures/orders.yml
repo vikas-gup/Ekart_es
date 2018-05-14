@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  cart_id: 1
+  status: 1
+  estimated_delivery: 1
+  delivery_date: MyString
+  datetime: MyString
+
+two:
+  user_id: 1
+  cart_id: 1
+  status: 1
+  estimated_delivery: 1
+  delivery_date: MyString
+  datetime: MyString

@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Item:</b>
+  <%= @cart.item_id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @cart.user_id %>
+</p>
+
+<p>
+  <b>Integer,:</b>
+  <%= @cart.integer, %>
+</p>
+
+<p>
+  <b>Quantity:</b>
+  <%= @cart.quantity %>
+</p>
+
+<p>
+  <b>Integer,:</b>
+  <%= @cart.integer, %>
+</p>
+
+<p>
+  <b>Total price:</b>
+  <%= @cart.total_price %>
+</p>
+
+<p>
+  <b>Float:</b>
+  <%= @cart.float %>
+</p>
+
+
+<%= link_to 'Edit', edit_cart_path(@cart) %> |
+<%= link_to 'Back', carts_path %>

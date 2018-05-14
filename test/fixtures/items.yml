@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  brand: MyString
+  string: MyString
+  price: MyString
+  float: MyString
+  category_id: MyString
+  integer: MyString
+
+two:
+  name: MyString
+  brand: MyString
+  string: MyString
+  price: MyString
+  float: MyString
+  category_id: MyString
+  integer: MyString

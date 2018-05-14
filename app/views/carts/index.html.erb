@@ -1,0 +1,35 @@
+<h1>Listing carts</h1>
+
+<table>
+  <tr>
+    <th>Item</th>
+    <th>User</th>
+    <th>Integer,</th>
+    <th>Quantity</th>
+    <th>Integer,</th>
+    <th>Total price</th>
+    <th>Float</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @carts.each do |cart| %>
+  <tr>
+    <td><%= cart.item_id %></td>
+    <td><%= cart.user_id %></td>
+    <td><%= cart.integer, %></td>
+    <td><%= cart.quantity %></td>
+    <td><%= cart.integer, %></td>
+    <td><%= cart.total_price %></td>
+    <td><%= cart.float %></td>
+    <td><%= link_to 'Show', cart %></td>
+    <td><%= link_to 'Edit', edit_cart_path(cart) %></td>
+    <td><%= link_to 'Destroy', cart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Cart', new_cart_path %>

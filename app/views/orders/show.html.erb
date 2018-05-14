@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @order.user_id %>
+</p>
+
+<p>
+  <b>Cart:</b>
+  <%= @order.cart_id %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @order.status %>
+</p>
+
+<p>
+  <b>Estimated delivery:</b>
+  <%= @order.estimated_delivery %>
+</p>
+
+<p>
+  <b>Delivery date:</b>
+  <%= @order.delivery_date %>
+</p>
+
+<p>
+  <b>Datetime:</b>
+  <%= @order.datetime %>
+</p>
+
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>
