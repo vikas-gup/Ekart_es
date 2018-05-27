@@ -6,20 +6,39 @@
 </p>
 
 <p>
-  <b>String:</b>
-  <%= @category.string %>
-</p>
-
-<p>
   <b>Description:</b>
   <%= @category.description %>
-</p>
-
-<p>
-  <b>String:</b>
-  <%= @category.string %>
 </p>
 
 
 <%= link_to 'Edit', edit_category_path(@category) %> |
 <%= link_to 'Back', categories_path %>
+
+
+<h1>Listing items of <%= @category.name %> </h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Brand</th>
+    <th>Price</th>
+    <th>Items Remaining</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% @category.items.each do |item| %>
+    <tr>
+      <td><%= item.name %></td>
+      <td><%= item.brand %></td>
+      <td><%= item.price %></td>
+      <td><%= item.store.pieces_remaining %></td>
+      <td><%= link_to 'Show', item %></td>
+      <td><%= button_to 'Add to Cart', {:controller => "carts", :action => "add_to_cart", :item_id => item.id}, :method => :post %></td>
+    </tr>
+  <% end %>
+</table>
+
+<br/>
+
+<%= link_to 'New Item', new_item_path %>

@@ -1,3 +1,4 @@
 class Store < ActiveRecord::Base
-  attr_accessible :integer, :item_id, :pieces_remaining
+  attr_accessible :item_id, :pieces_remaining
+  belongs_to :item
 end

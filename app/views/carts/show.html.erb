@@ -1,28 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Item:</b>
-  <%= @cart.item_id %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= @cart.user_id %>
-</p>
-
-<p>
-  <b>Integer,:</b>
-  <%= @cart.integer, %>
-</p>
-
-<p>
   <b>Quantity:</b>
   <%= @cart.quantity %>
-</p>
-
-<p>
-  <b>Integer,:</b>
-  <%= @cart.integer, %>
 </p>
 
 <p>
@@ -30,11 +10,30 @@
   <%= @cart.total_price %>
 </p>
 
-<p>
-  <b>Float:</b>
-  <%= @cart.float %>
-</p>
 
-
-<%= link_to 'Edit', edit_cart_path(@cart) %> |
 <%= link_to 'Back', carts_path %>
+
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Brand</th>
+    <th>Price</th>
+    <th>Category</th>
+    <th>Quantity</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% @cart.items.each do |item| %>
+    <tr>
+      <td><%= item.name %></td>
+      <td><%= item.brand %></td>
+      <td><%= item.price %></td>
+      <td><%= item.category.name %></td>
+      <td><%= item.item_cart_mappings(cart_id: @cart.id).last.item_quantity %></td>
+      <td><%= link_to 'Show', item %></td>
+      <td><%= button_to 'Remove from Cart', {:controller => "carts", :action => "remove_from_cart", :item_id => item.id}, :method => :post %></td>
+    </tr>
+  <% end %>
+</table>

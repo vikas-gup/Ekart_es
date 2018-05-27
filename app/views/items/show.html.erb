@@ -11,18 +11,8 @@
 </p>
 
 <p>
-  <b>String:</b>
-  <%= @item.string %>
-</p>
-
-<p>
   <b>Price:</b>
   <%= @item.price %>
-</p>
-
-<p>
-  <b>Float:</b>
-  <%= @item.float %>
 </p>
 
 <p>
@@ -30,11 +20,6 @@
   <%= @item.category_id %>
 </p>
 
-<p>
-  <b>Integer:</b>
-  <%= @item.integer %>
-</p>
 
-
-<%= link_to 'Edit', edit_item_path(@item) %> |
+<td><%= button_to "Add to Cart", :method=> "add_to_cart" %></td> |
 <%= link_to 'Back', items_path %>

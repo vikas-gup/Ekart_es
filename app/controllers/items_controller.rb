@@ -3,7 +3,9 @@ class ItemsController < ApplicationController
   # GET /items.json
   def index
     @items = Item.all
-
+    if params["search_item"].present?
+      @items = @items.search(params["search_item"]).records
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @items }

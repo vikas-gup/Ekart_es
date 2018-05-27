@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20180514070241) do
     t.string   "brand"
     t.string   "price"
     t.integer  "category_id"
+    t.integer  "store_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end

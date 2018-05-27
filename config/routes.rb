@@ -16,7 +16,14 @@ Ekart::Application.routes.draw do
 
   resources :users
 
+  # post 'categories/:id' => "carts#add_to_cart"
+  #
+  # post 'items' => "carts#add_to_cart"
+  #
+  #post 'carts' => "add_from_cart"
 
+  post 'add_to_cart' => "carts#add_to_cart"
+  post 'remove_from_cart' => "carts#remove_from_cart"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

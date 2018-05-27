@@ -80,4 +80,51 @@ class CartsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  #add to cart
+  def add_to_cart
+    @item = Item.find(params[:item_id])
+    @cart = $current_user.cart
+    @store = @item.store
+    if @store.present? and @store.pieces_remaining > 0
+      @item_cart_mapping = ItemCartMapping.where(cart_id: $current_user.cart.id, item_id: @item.id).first_or_create
+      @item_cart_mapping.item_quantity = @item_cart_mapping.item_quantity.to_i + 1
+      @item_cart_mapping.save!
+      pr = @store.pieces_remaining
+      @store.update_attributes(pieces_remaining: pr-1)
+      respond_to do |format|
+        format.html { redirect_to items_path, notice: 'Cart was successfully updated.' }
+        #format.json { head :no_content }
+      end
+    else
+      @store.errors.add(:pieces_remaining, "Item out of stock")
+      respond_to do |format|
+        format.html { redirect_to items_path}
+        format.json { render json: @cart.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def remove_from_cart
+    @item = Item.find(params[:item_id])
+    @cart = $current_user.cart
+    @store = @item.store
+    if @store.present?
+      @item_cart_mapping = ItemCartMapping.where(cart_id: $current_user.cart.id, item_id: @item.id).last
+      qu = @item_cart_mapping.item_quantity.to_i
+      @item_cart_mapping.destroy!
+      pr = @store.pieces_remaining
+      @store.update_attributes(pieces_remaining: pr+qu)
+      respond_to do |format|
+        format.html { redirect_to @cart, notice: 'Item was successfully removed from Cart' }
+        #format.json { head :no_content }
+      end
+    else
+      @store.errors.add(:pieces_remaining, "Item not belonging to our store")
+      respond_to do |format|
+        format.html { redirect_to @cart, notice: 'Item could not be removed from Cart' }
+        format.json { render json: @cart.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 end
